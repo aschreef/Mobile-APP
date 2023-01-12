@@ -1,3 +1,6 @@
+import 'dart:html';
+
+import 'package:calendar/constants/colors.dart';
 import 'package:calendar/screens/details/widgets/info_card.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
@@ -14,27 +17,34 @@ class UserProfileprof extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFEDF4FE),
+        backgroundColor: kBlueLight,
         elevation: 0.0,
        
         actions: [
-          ElevatedButton(
-            child: Text('Sign out'),
-            style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.all(1.0),
-              primary:Color(0xFFEDF4FE) ,
-              onPrimary: Color.fromARGB(255, 4, 4, 4),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: ElevatedButton(
+                
+                child: Text('Sign out'),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(1.0),
+                  primary:kRedLight ,
+                  onPrimary: Color.fromARGB(255, 4, 4, 4),
+                ),
+                onPressed: () {
+                  SystemNavigator.pop();
+                },
+              ),
             ),
-            onPressed: () {
-              SystemNavigator.pop();
-            },
           ),
         ],
       ),
       body: Container(
+      
         padding: const EdgeInsets.all(10),
         decoration: const BoxDecoration(
-          color: Color(0xFFEDF4FE),
+          color:kBlueLight,
         ),
         child: Column(
           children: <Widget>[
@@ -50,7 +60,7 @@ class UserProfileprof extends StatelessWidget {
               "Noora Samir",
               style: TextStyle(
                 fontSize: 20.0,
-                color: Color.fromARGB(255, 104, 8, 8),
+                color: Color.fromARGB(255, 14, 14, 14),
                 fontWeight: FontWeight.bold,
                 fontFamily: "Pacifico",
               ),
@@ -62,7 +72,7 @@ class UserProfileprof extends StatelessWidget {
               "Professor",
               style: TextStyle(
                   fontSize: 15.0,
-                  color: Color.fromARGB(255, 26, 31, 34),
+                  color: Color.fromARGB(255, 82, 96, 105),
                   letterSpacing: 2.5,
                   fontWeight: FontWeight.bold,
                   fontFamily: "Source Sans Pro"),
@@ -74,7 +84,9 @@ class UserProfileprof extends StatelessWidget {
                 color: Color.fromARGB(255, 0, 0, 0),
               ),
             ),
-            InfoCard(text: phone, icon: Icons.phone, onPressed: () async {}),
+            InfoCard(
+              text: phone, icon: Icons.phone,
+             onPressed: () async {}),
             InfoCard(
                 text: location,
                 icon: Icons.location_city,

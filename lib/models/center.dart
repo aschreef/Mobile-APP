@@ -124,7 +124,7 @@ class Centre {
           ),
           Centre(iconData: Icons.home_filled ,
           name: 'Center 3', 
-          bgColor: kBlueLight ,
+          bgColor: Color.fromARGB(255, 121, 172, 245) ,
           iconColor: kBlueDark ,
           btnColor: kBlue,
           classes : 0 ,

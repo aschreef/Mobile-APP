@@ -1,5 +1,7 @@
 import 'dart:js';
 
+import 'package:calendar/constants/colors.dart';
+import 'package:calendar/screens/home/home_login.dart';
 import 'package:calendar/screens/home/widgets/centers.dart';
 import 'package:calendar/screens/home/widgets/go_premium.dart';
 import 'package:calendar/screens/home/widgets/tasks.dart';
@@ -11,7 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kBlueLight,
       appBar: _buildAppBar(context),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,10 +39,14 @@ class HomePage extends StatelessWidget {
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
           ),
-          Expanded(child: Tasks()),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Tasks(),
+            )),
         ],
       ),
-      bottomNavigationBar: _buildBottonNavigationBar(),
+      /*bottomNavigationBar: _buildBottonNavigationBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
           shape:
@@ -48,7 +54,7 @@ class HomePage extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.black,
           onPressed: () {},
-          child: const Icon(Icons.add, size: 35)),
+          child: const Icon(Icons.add, size: 35)),*/
     );
   }
 
@@ -130,17 +136,10 @@ class HomePage extends StatelessWidget {
                       onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => Centers(),));},
-                      child: Text('Choice 1'))
+                builder: (context) => HomeLogIn(),));},
+                      child: Text('Déconnexion'))
                   ),
-                  const PopupMenuItem(
-                    value: 2,
-                    child: Text('Choice 2'),
-                  ),
-                  const PopupMenuItem(
-                    value: 3,
-                    child: Text('Choice 3'),
-                  ),
+                  
                 ];
               },
               icon: const Icon(

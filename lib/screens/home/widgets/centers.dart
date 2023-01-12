@@ -1,3 +1,4 @@
+import 'package:calendar/constants/colors.dart';
 import 'package:calendar/screens/details/detail.dart';
 import 'package:calendar/screens/home/widgets/go_premium.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -17,7 +18,7 @@ class Centers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 139, 136, 136).withOpacity(0.1),
+      backgroundColor: kBlueLight,
       appBar: _buildAppBar(context),
       body: Column(
         children: [GoPremium(),
@@ -31,12 +32,12 @@ class Centers extends StatelessWidget {
           ),
         ],
       ),
-        bottomNavigationBar: _buildBottonNavigationBar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        //bottomNavigationBar: _buildBottonNavigationBar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          elevation: 0,
+          elevation: 50,
           backgroundColor: Colors.black,
           onPressed: () {},
           child: const Icon(Icons.add, size: 35)),
@@ -81,6 +82,7 @@ class Centers extends StatelessWidget {
             Icon(
               centre.iconData,
               color: centre.iconColor,
+              size: 50,
             ),
             const SizedBox(
               height: 50,

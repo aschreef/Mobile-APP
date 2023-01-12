@@ -10,17 +10,17 @@ import '../../../models/task.dart';
 class Tasks extends StatelessWidget {
   final tasklist = Task.generateTasks();
 
+/*SliverGrid(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          delegate: SliverChildListDelegate(*/
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding:const EdgeInsets.symmetric(horizontal :15),
-      child: GridView.builder(
-        itemCount: tasklist.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
-            itemBuilder: (context , index) => tasklist[index].isLast ? _buildAddTask() : _buildTask(context , tasklist[index])
-      ),
-      );
+    return GridView.builder(
+      itemCount: tasklist.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
+          itemBuilder: (context , index) => tasklist[index].isLast ? _buildAddTask() : _buildTask(context , tasklist[index])
+    );
     
   }
   Widget _buildAddTask(){

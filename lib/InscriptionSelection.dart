@@ -1,3 +1,4 @@
+import 'package:calendar/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'Inscription/InscriptionProf.dart';
 import 'Inscription/InscriptionEtudiant.dart';
@@ -14,6 +15,18 @@ class _HomePageState extends State<InscriptionSelection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kBlueLight,
+      appBar: AppBar(
+          title: const Center(
+            child: Text(
+              'EtuDy',
+              style: TextStyle(
+                  color:kRedDark,
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          backgroundColor: kBlueLight),
       body: SelectionScreen(),
     );
   }
@@ -39,8 +52,9 @@ class _SelectionScreenState extends State<SelectionScreen> {
             "Créer un compte en tant que :",
             style: TextStyle(
                 color: Colors.black,
-                fontSize: 25.0,
-                fontWeight: FontWeight.bold),
+                fontSize: 20,
+                //fontWeight: FontWeight.bold
+                ),
           ),
           const SizedBox(
             height: 44.0,
@@ -54,12 +68,12 @@ class _SelectionScreenState extends State<SelectionScreen> {
                     MaterialPageRoute(
                         builder: (context) => InscriptionEtudiant()));
               },
-              fillColor: Color.fromARGB(255, 225, 136, 197),
+              fillColor: kRedLight,
               elevation: 0.0,
               padding: EdgeInsets.symmetric(vertical: 20.0),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.0)),
-              child: Text("Un étudiant",
+              child: Text("Etudiant",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18.0,
@@ -74,44 +88,21 @@ class _SelectionScreenState extends State<SelectionScreen> {
             child: RawMaterialButton(
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RegisterScreen()));
+                    MaterialPageRoute(builder: (context) => InscriptionProf()));
               },
-              fillColor: Color.fromARGB(255, 225, 136, 197),
+              fillColor: kRedLight,
               elevation: 0.0,
               padding: EdgeInsets.symmetric(vertical: 20.0),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.0)),
-              child: Text("Un professeur",
+              child: Text("Professeur",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18.0,
                   )),
             ),
           ),
-          const SizedBox(
-            height: 44.0,
-          ),
-          Container(
-            width: double.infinity,
-            child: RawMaterialButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => InscriptionAdmin()));
-              },
-              fillColor: Color.fromARGB(255, 225, 136, 197),
-              elevation: 0.0,
-              padding: EdgeInsets.symmetric(vertical: 20.0),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0)),
-              child: Text("Un admin centre",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18.0,
-                  )),
-            ),
-          ),
+        
         ],
       ),
     );

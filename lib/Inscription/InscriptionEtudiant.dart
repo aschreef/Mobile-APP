@@ -1,151 +1,270 @@
+import 'package:calendar/constants/colors.dart';
+import 'package:calendar/screens/home/home_login.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:validators/validators.dart';
 
 class InscriptionEtudiant extends StatefulWidget {
-  const InscriptionEtudiant({ Key? key}) : super(key:key);
-
-  @override 
-  _HomePageState createState() => _HomePageState();
+  @override
+  _InscriptionEtudiantState createState() => _InscriptionEtudiantState();
 }
 
-class _HomePageState extends State <InscriptionEtudiant> {
-  @override 
+class _InscriptionEtudiantState extends State<InscriptionEtudiant> {
+  final _auth = FirebaseAuth.instance;
+  final _formKey = GlobalKey<FormState>();
+  late String email;
+  late String password;
+  late String nom;
+  late String telephone;
+  late String prenom;
+  late String niveau;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: InscriptionEtudiantScreen(),
-    );
-  }
-}
-
-class InscriptionEtudiantScreen extends StatefulWidget {
-  const InscriptionEtudiantScreen({Key? key}) : super(key: key);
-
-  @override 
-  _InscriptionEtudiantScreenState createState() => _InscriptionEtudiantScreenState();
-}
-
-class _InscriptionEtudiantScreenState extends State <InscriptionEtudiantScreen> {
-  @override 
-  Widget build(BuildContext context){
-
-    return Padding(
-      padding: const EdgeInsets.all(5.5),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "Créer un compte en tant que un étudiant:",
-            style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.bold), 
-          ),
-
-          const SizedBox(
-            height: 10.0,
-          ),
-          const Text(
-            "Nom:",
-            style: TextStyle(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold), 
-          ),
-          const TextField(
-          ),
-
-           const SizedBox(
-             height: 5.0,
-          ),
-          const Text(
-            "Prenom:",
-            style: TextStyle(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold), 
-          ),
-          const TextField(
-          ),
-          
-
-          const SizedBox(
-            height: 5.0,
-          ),
-          const Text(
-            "Nom d'utilisateur:",
-            style: TextStyle(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold), 
-          ),
-          const TextField(
-          ),
-
-          const SizedBox(
-            height: 5.0,
-          ),
-          const Text(
-            "Email:",
-            style: TextStyle(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold), 
-          ),
-          const TextField(
-          ),
-        
-
-          const SizedBox(
-            height: 5.0,
-          ),
-          const Text(
-            "Mot de passe:",
-            style: TextStyle(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold), 
-          ),
-          const TextField(
-            obscureText: true ,
-
+        backgroundColor: kBlueLight,
+        appBar: AppBar(
+            title: const Center(
+              child: Text(
+                'Etudy',
+                style: TextStyle(
+                    color: kRedDark, fontSize: 26, fontWeight: FontWeight.bold),
+              ),
             ),
+            backgroundColor: kBlueLight),
+        body: Center(
+          child: Form(
+            key: _formKey,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(20),
+                      child: const Text(
+                          "Veuillez remplir les champs suivants : ",
+                          style: TextStyle(fontSize: 17)),
+                    ),
+                    TextFormField(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Entrez votre nom';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        nom = value;
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.all(0.0),
+                          child: Icon(
+                            Icons.person,
+                            color: Colors.grey,
+                          ),
+                        ), // icon is 48px
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: 'Entrez votre nom',
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextFormField(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Entrez votre prénom';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        prenom = value;
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.all(0.0),
+                          child: Icon(
+                            Icons.person,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: 'Entrez votre prénom;',
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextFormField(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Entrer votre numéro de téléphone';
+                        }
+                        if (!isNumeric(value)) {
+                          return 'Entrer un numéro de téléphone valide ';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        telephone = value;
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.all(0.0),
+                          child: Icon(
+                            Icons.phone,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: 'Entrer votre numéro de téléphone',
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    
+                    TextFormField(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Entrer votre niveau d'étude";
+                        }
+                        if (!isNumeric(value)) {
+                          return "Entrer un niveau d'étude valide ";
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        niveau = value;
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.all(0.0),
+                          child: Icon(
+                            Icons.book,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: "Entrer votre niveau d'étude ",
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextFormField(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Entrer votre e-mail';
+                        }
+                        if (!isEmail(value)) {
+                          return 'Entrer un e-mail valide';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        email = value;
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.all(0.0),
+                          child: Icon(
+                            Icons.email,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: 'Entrer votre email',
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextFormField(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Entrer votre mot de passe';
+                        }
+                        if (value.length < 6) {
+                          return 'mot de passe doit contenir au moins 6 caractères';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        password = value;
+                      },
+                      decoration: InputDecoration(
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.all(0.0),
+                          child: Icon(
+                            Icons.lock,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        hintText: 'Entrer votre mot de passe',
+                      ),
+                      obscureText: true,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                        style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            //  side: BorderSide(color: Colors.red)
+                            //backgroundColor: MaterialStateProperty.all(Colors.red),
+                          )),
+                          backgroundColor: MaterialStateProperty.all(kRedLight),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 50, vertical: 20),
+                          child: Text(
+                            "S'inscrire",
+                            style: TextStyle(fontSize: 20, color: Colors.black),
+                          ),
+                        ),
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            try {
+                              final newUser =
+                                  await _auth.createUserWithEmailAndPassword(
+                                      email: email, password: password);
+                              if (newUser != null) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HomeLogIn()));
 
-          const SizedBox(
-            height: 5.0,
+                                // Register the user's nom; and telephone number
+                                // by updating the user's profile
+                              }
+                            } catch (e) {
+                              print(e);
+                            }
+                          }
+                          ;
+                        })
+                  ]),
+            ),
           ),
-          const Text(
-            "Téléphone:",
-            style: TextStyle(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold), 
-          ),
-          const TextField(
-          ),
-
-          const SizedBox(
-            height: 5.0,
-          ),
-          const Text(
-            "Localisation:",
-            style: TextStyle(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold), 
-          ),
-          const TextField(
-          ),
-          
-          const SizedBox(
-            height: 5.0,
-          ),
-          const Text(
-            "Niveau d'étude:",
-            style: TextStyle(color: Colors.black, fontSize: 15.0, fontWeight: FontWeight.bold), 
-          ),
-          const TextField(
-          ),
-                              
-
-          Container(
-            width: double.infinity,
-            child: RawMaterialButton(
-              fillColor: Color(0xFF0069FE),
-              elevation: 0.0,
-              padding: EdgeInsets.symmetric(vertical: 20.0),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0)),
-              onPressed: () {},
-              child:Text("S'inscrire",
-              style:TextStyle(
-                color:Colors.white,
-                fontSize: 18.0,
-              )),
-              ),
-              ),
-
-          const SizedBox(
-            height: 5.0,
-          ),
-
-        ]
-      ),
-    );
+        ));
   }
 }
