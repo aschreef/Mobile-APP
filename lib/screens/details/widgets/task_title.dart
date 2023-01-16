@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class TaskTitle extends StatelessWidget {
   @override
@@ -12,7 +10,7 @@ class TaskTitle extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const Text(
-            'Tasks',
+            'Scéances',
             style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
           ),
           Container(

@@ -1,5 +1,5 @@
-import 'package:calendar/constants/colors.dart';
-import 'package:calendar/screens/home/home.dart';
+import 'package:Etudy/constants/colors.dart';
+import 'package:Etudy/screens/home/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -27,7 +27,7 @@ class _HomeLogInState extends State<HomeLogIn> {
       appBar: AppBar(
           title: const Center(
             child: Text(
-              'EtuDy',
+              'Etudy',
               style: TextStyle(
                   color: kRedDark, fontSize: 26, fontWeight: FontWeight.bold),
             ),

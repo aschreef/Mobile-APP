@@ -1,6 +1,4 @@
-import 'package:calendar/constants/colors.dart';
-import 'package:flutter/cupertino.dart';
-
+import 'package:Etudy/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class Task {
@@ -28,7 +26,7 @@ class Task {
     return [
       Task(
         iconData: Icons.calendar_month,
-        title: 'Calendar',
+        title: 'Calendrier',
         bgColor: kYellowLight,
         iconColor: kYellowDark,
         btnColor: kYellow,
@@ -36,14 +34,14 @@ class Task {
         desc: [
           {
             'time': '9:00 am',
-            'title': 'go for a walk with dog',
+            'title': "Scéance d'étude groupe 1",
             'slot': '9:00 - 10:00 am',
             'tlColor': kRedDark,
             'bgColor': kRedLight
           },
           {
             'time': '10:00 am',
-            'title': 'shot on Dribble',
+            'title': "Scéance d'étude groupe 2",
             'slot': '10:00 - 12:00 am',
             'tlColor': kBlueDark,
             'bgColor': kBlueLight,
@@ -64,7 +62,7 @@ class Task {
           },
           {
             'time': '1:00 pm',
-            'title': 'Call with client',
+            'title': "Scéance d'étude groupe 5 ",
             'slot': '1:00 - 2:00 pm',
             'tlColor': kYellowDark,
             'bgColor': kYellowLight
@@ -88,7 +86,7 @@ class Task {
       ),
       Task(
         iconData: Icons.chat_sharp,
-        title: 'Chat forum',
+        title: 'Chat',
         bgColor: kRedLight,
         iconColor: kRedDark,
         btnColor: kRed,
@@ -97,7 +95,7 @@ class Task {
       ),
       Task(
         iconData: Icons.notifications,
-        title: 'Notification',
+        title: 'Notifications',
         bgColor: Color.fromARGB(255, 121, 172, 245),
         iconColor: kBlueDark,
         btnColor: kBlue,
@@ -114,14 +112,14 @@ class Task {
         desc: [
           {
             'time': '9:00 am',
-            'title': 'go for a walk with dog',
+            'title': "Scéance d'étude groupe 1",
             'slot': '9:00 - 10:00 am',
             'tlColor': kRedDark,
             'bgColor': kRedLight
           },
           {
             'time': '10:00 am',
-            'title': 'shot on Dribble',
+            'title': "Scéance d'étude groupe 2",
             'slot': '10:00 - 12:00 am',
             'tlColor': kBlueDark,
             'bgColor': kBlueLight,
@@ -142,7 +140,7 @@ class Task {
           },
           {
             'time': '1:00 pm',
-            'title': 'Call with client',
+            'title': "Scéance d'étude groupe 5 ",
             'slot': '1:00 - 2:00 pm',
             'tlColor': kYellowDark,
             'bgColor': kYellowLight

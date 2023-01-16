@@ -1,17 +1,14 @@
-import 'dart:js';
 
-import 'package:calendar/constants/colors.dart';
-import 'package:calendar/screens/home/home_login.dart';
-import 'package:calendar/screens/home/widgets/centers.dart';
-import 'package:calendar/screens/home/widgets/go_premium.dart';
-import 'package:calendar/screens/home/widgets/tasks.dart';
+import 'package:Etudy/constants/colors.dart';
+import 'package:Etudy/screens/home/home_login.dart';
+import 'package:Etudy/screens/home/widgets/centers.dart';
+import 'package:Etudy/screens/home/widgets/go_premium.dart';
+import 'package:Etudy/screens/home/widgets/tasks.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../details/profile_prof.dart';
 import '../details/widgets/profile_prof2.dart';
-import '../details/widgets/welcome.dart';
+
 
 class HomePage extends StatefulWidget {
   late String welcome ;
@@ -48,7 +45,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(15),
             margin: const EdgeInsets.all(15),
             child: const Text(
-              'Dashbord',
+              'Dashboard',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
           ),
@@ -59,15 +56,7 @@ class _HomePageState extends State<HomePage> {
             )),
         ],
       ),
-      /*bottomNavigationBar: _buildBottonNavigationBar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          elevation: 0,
-          backgroundColor: Colors.black,
-          onPressed: () {},
-          child: const Icon(Icons.add, size: 35)),*/
+
     );
   }
 
@@ -193,7 +182,3 @@ class _HomePageState extends State<HomePage> {
   }
   }
 
-
-/*class HomePage extends StatelessWidget {
-  
-}*/

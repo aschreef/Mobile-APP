@@ -1,6 +1,7 @@
-import 'package:calendar/constants/colors.dart';
-import 'package:calendar/screens/details/detail.dart';
-import 'package:calendar/screens/home/widgets/go_premium.dart';
+import 'package:Etudy/constants/colors.dart';
+import 'package:Etudy/screens/details/detail.dart';
+import 'package:Etudy/screens/details/widgets/profile_prof2.dart';
+import 'package:Etudy/screens/home/widgets/go_premium.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -10,7 +11,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/center.dart';
-import '../../details/profile_prof.dart';
+
 
 
 class Centers extends StatelessWidget {
@@ -160,9 +161,6 @@ class Centers extends StatelessWidget {
             child: GestureDetector(
               onTap:(){
 
-            Navigator.push(context,
-            MaterialPageRoute(builder: (context) => UserProfileprof())
-            );
           }, 
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
@@ -173,7 +171,7 @@ class Centers extends StatelessWidget {
           const SizedBox(
             width: 10,
           ),
-          const Text('Hi, Mr Professor ',
+          const Text('Bienvenue  ',
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 26,

@@ -1,4 +1,4 @@
-import 'package:calendar/constants/colors.dart';
+import 'package:Etudy/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class InfoCard extends StatelessWidget {

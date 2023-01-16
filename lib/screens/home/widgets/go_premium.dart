@@ -35,7 +35,7 @@ class GoPremium extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
-                    Text('My Centers : ',
+                    Text('Mes Centres : ',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -43,7 +43,7 @@ class GoPremium extends StatelessWidget {
                         )),
                     SizedBox(height: 10),
                     Text(
-                      'these are the centers \n that you are attached to!',
+                      'Voici la liste des centres \noù vous êtes inscrit!',
                       style: TextStyle(
                         fontSize: 16,
                         color: Color.fromARGB(255, 99, 98, 98),

@@ -1,6 +1,5 @@
-import 'package:calendar/constants/colors.dart';
-import 'package:calendar/screens/details/profile_prof.dart';
-import 'package:calendar/screens/home/home_login.dart';
+import 'package:Etudy/constants/colors.dart';
+import 'package:Etudy/screens/home/home_login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -98,7 +97,7 @@ class _InscriptionProfState extends State<InscriptionProf> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          hintText: 'Entrez votre prénom;',
+                          hintText: 'Entrez votre prénom',
                         ),
                       ),
                       SizedBox(
@@ -107,10 +106,10 @@ class _InscriptionProfState extends State<InscriptionProf> {
                       TextFormField(
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Entrer votre numéro de téléphone';
+                            return 'Entrez votre numéro de téléphone';
                           }
                           if (!isNumeric(value)) {
-                            return 'Entrer un numéro de téléphone valide ';
+                            return 'Entrez un numéro de téléphone valide ';
                           }
                           return null;
                         },
@@ -128,7 +127,7 @@ class _InscriptionProfState extends State<InscriptionProf> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          hintText: 'Entrer votre numéro de téléphone',
+                          hintText: 'Entrez votre numéro de téléphone',
                         ),
                       ),
                       SizedBox(
@@ -139,7 +138,7 @@ class _InscriptionProfState extends State<InscriptionProf> {
                         validator: (value) {
                           
                           if (value!.isEmpty) {
-                            return "Entrer votre localisation";
+                            return "Entrez votre localisation";
                           }
              
                           return null;
@@ -158,7 +157,7 @@ class _InscriptionProfState extends State<InscriptionProf> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          hintText: "Entrer votre localisation",
+                          hintText: "Entrez votre localisation",
                         ),
                       ),
                       SizedBox(
@@ -167,7 +166,7 @@ class _InscriptionProfState extends State<InscriptionProf> {
                       TextFormField(
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Entrer votre matière';
+                            return 'Entrez votre matière';
                           }
         
                           return null;
@@ -186,7 +185,7 @@ class _InscriptionProfState extends State<InscriptionProf> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          hintText: 'Entrer votre matière',
+                          hintText: 'Entrez votre matière',
                         ),
                       ),
                       SizedBox(
@@ -195,10 +194,10 @@ class _InscriptionProfState extends State<InscriptionProf> {
                       TextFormField(
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Entrer votre e-mail';
+                            return 'Entrez votre e-mail';
                           }
                           if (!isEmail(value)) {
-                            return 'Entrer un e-mail valide';
+                            return 'Entrez un e-mail valide';
                           }
                           return null;
                         },
@@ -216,7 +215,7 @@ class _InscriptionProfState extends State<InscriptionProf> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          hintText: 'Entrer votre email',
+                          hintText: 'Entrez votre email',
                         ),
                       ),
                       SizedBox(
@@ -225,10 +224,10 @@ class _InscriptionProfState extends State<InscriptionProf> {
                       TextFormField(
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Entrer votre mot de passe';
+                            return 'Entrez votre mot de passe';
                           }
                           if (value.length < 6) {
-                            return 'mot de passe doit contenir au moins 6 caractères';
+                            return 'Le mot de passe doit contenir au moins 6 caractères';
                           }
                           return null;
                         },
@@ -246,7 +245,7 @@ class _InscriptionProfState extends State<InscriptionProf> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          hintText: 'Entrer votre mot de passe',
+                          hintText: 'Entrez votre mot de passe',
                         ),
                         obscureText: true,
                       ),

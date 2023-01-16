@@ -1,20 +1,41 @@
-import 'dart:html';
-
-import 'package:calendar/constants/colors.dart';
-import 'package:calendar/screens/details/widgets/info_card.dart';
+import 'package:Etudy/screens/details/widgets/info_card.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui';
 
-import 'package:flutter/services.dart';
+import '../../../constants/colors.dart';
+import '../../home/home_login.dart';
 
-
-
-class UserProfileprof extends StatelessWidget {
-
-
+class UserProfile extends StatefulWidget {
+  late String userState; 
+  late String uid;
+  UserProfile({required this.userState,required this.uid});
   @override
-  Widget build(BuildContext context) => Scaffold(
+  _UserProfileState createState() => _UserProfileState();
+}
+
+class _UserProfileState extends State<UserProfile> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: FutureBuilder(
+        future: FirebaseFirestore.instance.collection(widget.userState).doc(widget.uid).get(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Text("Error: ${snapshot.error}");
+          }
+          if (snapshot.hasData) {
+            var Data = snapshot.data;
+            var userData =Data!.data() as Map;
+            print(userData);
+
+            var name = userData['nom'];
+            var  prenom = userData['prenom'];
+            var phone=userData['telephone'];
+            var email=userData['email'];
+            var localisation=userData['localisation'];
+
+            return Scaffold(
       appBar: AppBar(
         backgroundColor: kBlueLight,
         elevation: 0.0,
@@ -25,14 +46,18 @@ class UserProfileprof extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               child: ElevatedButton(
                 
-                child: Text('Sign out'),
+                child: Text('Déconnexion'),
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.all(1.0),
                   primary:kRedLight ,
                   onPrimary: Color.fromARGB(255, 4, 4, 4),
                 ),
-                onPressed: () {
-                  SystemNavigator.pop();
+                onPressed: () async {
+                  await FirebaseAuth.instance.signOut();
+                   Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => HomeLogIn()));
                 },
               ),
             ),
@@ -56,7 +81,7 @@ class UserProfileprof extends StatelessWidget {
             ),
              const SizedBox(height: 10.0),
              Text(
-              "Mr X",
+              "${name} ${prenom}",
               style: TextStyle(
                 fontSize: 20.0,
                 color: Color.fromARGB(255, 14, 14, 14),
@@ -68,7 +93,7 @@ class UserProfileprof extends StatelessWidget {
               height: 10.0,
             ),
              Text(
-              "professeur",
+              widget.userState,
               style: TextStyle(
                   fontSize: 15.0,
                   color: Color.fromARGB(255, 82, 96, 105),
@@ -84,14 +109,20 @@ class UserProfileprof extends StatelessWidget {
               ),
             ),
             InfoCard(
-              text: "+++", icon: Icons.phone,
+              text: phone, icon: Icons.phone,
              onPressed: () async {}),
             InfoCard(
-                text: "tunis",
+                text: localisation,
                 icon: Icons.location_city,
                 onPressed: ()  {}),
-            InfoCard(text: "email@email.com", icon: Icons.email, onPressed: ()  {}),
+            InfoCard(text: email, icon: Icons.email, onPressed: ()  {}),
           ],
         ),
       ));
+          }
+          return Center(child: CircularProgressIndicator());
+        },
+      ),
+    );
+  }
 }

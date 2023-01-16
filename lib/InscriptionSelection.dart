@@ -1,8 +1,8 @@
-import 'package:calendar/constants/colors.dart';
+import 'package:Etudy/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'Inscription/InscriptionProf.dart';
 import 'Inscription/InscriptionEtudiant.dart';
-import 'Inscription/InscriptionAdmin.dart';
+
 
 class InscriptionSelection extends StatefulWidget {
   const InscriptionSelection({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class _HomePageState extends State<InscriptionSelection> {
       appBar: AppBar(
           title: const Center(
             child: Text(
-              'EtuDy',
+              'Etudy',
               style: TextStyle(
                   color:kRedDark,
                   fontSize: 26,

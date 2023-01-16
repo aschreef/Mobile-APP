@@ -1,4 +1,4 @@
-import 'package:calendar/screens/details/detail.dart';
+import 'package:Etudy/screens/details/detail.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:dotted_border/dotted_border.dart';

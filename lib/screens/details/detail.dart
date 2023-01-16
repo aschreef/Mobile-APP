@@ -1,10 +1,9 @@
-import 'package:calendar/models/task.dart';
-import 'package:calendar/screens/details/widgets/date_picker.dart';
-import 'package:calendar/screens/details/widgets/task_timeline.dart';
-import 'package:calendar/screens/details/widgets/task_title.dart';
+import 'package:Etudy/models/task.dart';
+import 'package:Etudy/screens/details/widgets/date_picker.dart';
+import 'package:Etudy/screens/details/widgets/task_timeline.dart';
+import 'package:Etudy/screens/details/widgets/task_title.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class DetailPage extends StatelessWidget {
   final Task task;
@@ -37,7 +36,7 @@ class DetailPage extends StatelessWidget {
                     color: Colors.white,
                     child: const Center(
                         child: Text(
-                      'no task for today',
+                      "Pas de scéances pour aujourd'hui",
                       style: TextStyle(color: Colors.grey, fontSize: 18),
                     )),
                   ),
@@ -69,12 +68,12 @@ class DetailPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              '${task.title} tasks',
+              '${task.title} tâches',
               style: const TextStyle(
                   fontWeight: FontWeight.bold, color: Colors.white),
             ),
             const SizedBox(height: 5),
-            Text('you have ${task.left} tasks for today',
+            Text("Vous avez ${task.left} tâches pour aujourd'hui ",
                 style: const TextStyle(
                     fontSize: 12, color: Color.fromARGB(255, 59, 59, 59)))
           ],
