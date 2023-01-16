@@ -1,5 +1,8 @@
 # Etudy
 
+![etudy](https://user-images.githubusercontent.com/90092056/212763292-48df298f-1fa2-4050-807d-e33175e22e59.png)
+
+
 Description
 
 Notre application mobile a pour but de faciliter la communication et la collaboration entre les élèves et les enseignants dans un centre d'étude. Elle permet aux utilisateurs de :
