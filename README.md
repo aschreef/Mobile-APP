@@ -29,7 +29,7 @@ Comment utiliser l'application
 
 Remarque
 
-  SDk version >2.18.2 <3.0.0
+  Required SDK version >2.18.2 <3.0.0
   
   cupertino_icons: ^1.0.2
   
