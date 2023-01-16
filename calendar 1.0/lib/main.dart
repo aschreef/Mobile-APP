@@ -1,4 +1,6 @@
+import 'package:calendar/screens/home/home.dart';
 import 'package:calendar/screens/home/home_login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; 
@@ -18,11 +20,13 @@ void main() async {
 }
 
 
+
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
-  @override
+  /*@override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
@@ -31,6 +35,38 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Tasks',
       home: HomeLogIn(),
+    );*/
+    
+  @override
+  Widget build(BuildContext context) {
+     SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            User? user =snapshot.data;
+            if (user!= null) 
+            {
+              String? displayName = user.displayName;
+              print(displayName);
+              return HomePage(welcome:'Welcome $displayName');
+              
+
+
+
+            }
+            else return HomePage(welcome:"Welcome 123");
+
+
+          
+          } else {
+            return HomeLogIn();
+          }
+        },
+      ),
     );
   }
 }

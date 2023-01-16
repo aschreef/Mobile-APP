@@ -1,5 +1,8 @@
+import 'package:calendar/constants/colors.dart';
 import 'package:calendar/screens/details/detail.dart';
 import 'package:calendar/screens/home/widgets/go_premium.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -17,7 +20,7 @@ class Centers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 139, 136, 136).withOpacity(0.1),
+      backgroundColor: kBlueLight,
       appBar: _buildAppBar(context),
       body: Column(
         children: [GoPremium(),
@@ -31,12 +34,12 @@ class Centers extends StatelessWidget {
           ),
         ],
       ),
-        bottomNavigationBar: _buildBottonNavigationBar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        //bottomNavigationBar: _buildBottonNavigationBar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          elevation: 0,
+          elevation: 50,
           backgroundColor: Colors.black,
           onPressed: () {},
           child: const Icon(Icons.add, size: 35)),
@@ -81,6 +84,7 @@ class Centers extends StatelessWidget {
             Icon(
               centre.iconData,
               color: centre.iconColor,
+              size: 50,
             ),
             const SizedBox(
               height: 50,
@@ -155,16 +159,17 @@ class Centers extends StatelessWidget {
             //margin: const EdgeInsets.only(left : 15),
             child: GestureDetector(
               onTap:(){
+
             Navigator.push(context,
             MaterialPageRoute(builder: (context) => UserProfileprof())
             );
-          } ,
+          }, 
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset('images/avatar.jpg'),
-              ),
-            ),
-          ),
+              )
+              
+            ),),
           const SizedBox(
             width: 10,
           ),

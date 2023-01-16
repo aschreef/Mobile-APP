@@ -98,7 +98,7 @@ class Task {
       Task(
         iconData: Icons.notifications,
         title: 'Notification',
-        bgColor: kBlueLight,
+        bgColor: Color.fromARGB(255, 121, 172, 245),
         iconColor: kBlueDark,
         btnColor: kBlue,
         left: 0,

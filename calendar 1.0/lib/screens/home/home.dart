@@ -1,17 +1,32 @@
 import 'dart:js';
 
+import 'package:calendar/constants/colors.dart';
+import 'package:calendar/screens/home/home_login.dart';
 import 'package:calendar/screens/home/widgets/centers.dart';
 import 'package:calendar/screens/home/widgets/go_premium.dart';
 import 'package:calendar/screens/home/widgets/tasks.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../details/profile_prof.dart';
+import '../details/widgets/profile_prof2.dart';
+import '../details/widgets/welcome.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  late String welcome ;
+  HomePage({required this.welcome});
   @override
-  Widget build(BuildContext context) {
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+
+  @override
+  Widget build(BuildContext context)   {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kBlueLight,
       appBar: _buildAppBar(context),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,10 +52,14 @@ class HomePage extends StatelessWidget {
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
           ),
-          Expanded(child: Tasks()),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Tasks(),
+            )),
         ],
       ),
-      bottomNavigationBar: _buildBottonNavigationBar(),
+      /*bottomNavigationBar: _buildBottonNavigationBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
           shape:
@@ -48,7 +67,7 @@ class HomePage extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.black,
           onPressed: () {},
-          child: const Icon(Icons.add, size: 35)),
+          child: const Icon(Icons.add, size: 35)),*/
     );
   }
 
@@ -83,7 +102,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  AppBar _buildAppBar(context) {
+  AppBar _buildAppBar(context)  {
     return AppBar(
         backgroundColor: Colors.grey.withOpacity(0.1),
         elevation: 0,
@@ -94,22 +113,50 @@ class HomePage extends StatelessWidget {
               width: 45,
               //margin: const EdgeInsets.only(left : 15),
               child: GestureDetector(
-                onTap: () {
+                onTap: () async{
+                  var userType="Professor";
+                  late String uid='';
+
+
+                      FirebaseFirestore firestore = FirebaseFirestore.instance;
+                      User? newUser = FirebaseAuth.instance.currentUser;
+
+                               if (newUser != null) {
+                                uid=newUser.uid;
+                                
+                                if (newUser.photoURL=='1')  {userType="Etudiant";}
+
+                             
+                              } else {
+
+                              Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => HomeLogIn()));
+                              }
+                              
+              
+                                 
+                                
+
+
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => UserProfileprof()));
-                },
+                          builder: (context) => UserProfile(userState: userType,uid:uid)));}
+            ,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset('images/avatar.jpg'),
-                ),
-              ),
-            ),
+                )
+              
+            ),),
             const SizedBox(
               width: 10,
             ),
-            const Text('Hi, Mr Professor ',
+            //Text("Bienvenue M. ${data['prenom']} ${data['nom']}"),
+             
+             Text(widget.welcome,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 26,
@@ -127,20 +174,14 @@ class HomePage extends StatelessWidget {
                    PopupMenuItem(
                     value: 1,
                     child: TextButton(
-                      onPressed: () {
+                      onPressed: () async{
+                        await FirebaseAuth.instance.signOut();
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => Centers(),));},
-                      child: Text('Choice 1'))
+                builder: (context) => HomeLogIn(),));},
+                      child: Text('Déconnexion'))
                   ),
-                  const PopupMenuItem(
-                    value: 2,
-                    child: Text('Choice 2'),
-                  ),
-                  const PopupMenuItem(
-                    value: 3,
-                    child: Text('Choice 3'),
-                  ),
+                  
                 ];
               },
               icon: const Icon(
@@ -150,4 +191,9 @@ class HomePage extends StatelessWidget {
               ))
         ]);
   }
-}
+  }
+
+
+/*class HomePage extends StatelessWidget {
+  
+}*/

@@ -1,3 +1,4 @@
+import 'package:calendar/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class InfoCard extends StatelessWidget {
@@ -12,19 +13,23 @@ class InfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
-      child: Card(
-        color: Colors.white,
+      child: Card( 
+        shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+  ),
+        color: kRedLight,
         margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
         child: ListTile(
           leading: Icon(
             icon,
-            color: Colors.teal,
+            color: Color.fromARGB(255, 177, 189, 199),
           ),
           title: Text(
             text,
             style: TextStyle(
-                color: Colors.teal,
-                fontSize: 15.0,
+                color: Colors.black,
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
                 fontFamily: "Source Sans Pro"),
           ),
         ),
