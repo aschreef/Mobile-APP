@@ -27,9 +27,14 @@ Comment utiliser l'application
 Remarque
 
   SDk version >2.18.2 <3.0.0
+  
   cupertino_icons: ^1.0.2
+  
   firebase_core: ^2.4.1
+  
   firebase_auth: ^4.2.5
+  
   cloud_firestore: ^4.3.1
+  
   validators: ^3.0.0
   
